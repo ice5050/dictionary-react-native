@@ -8,21 +8,22 @@ import React, {
   Component,
   StyleSheet,
   Text,
+  TextInput,
   View
 } from 'react-native';
 
 class Dictionary extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
+      <View style = { styles.parent } >
+        <Text>
+          Type something in English:
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
+        <TextInput />
+        <Text style = { styles.germanLabel } >
+          Its German equivalent is:
         </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
+        <Text style = { styles.germanWord } >
         </Text>
       </View>
     );
@@ -30,21 +31,22 @@ class Dictionary extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  // For the container View
+  parent: {
+    padding: 16
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+
+  // For the Text label
+  germanLabel: {
+    marginTop: 20,
+    fontWeight: 'bold'
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+
+  // For the Text meaning
+  germanWord: {
+    marginTop: 15,
+    fontSize: 30,
+    fontStyle: 'italic'
   },
 });
 
