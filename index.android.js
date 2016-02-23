@@ -2,17 +2,43 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
-'use strict';
 import React, {
   AppRegistry,
   Component,
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
 } from 'react-native';
 
+const styles = StyleSheet.create({
+  // For the container View
+  parent: {
+    padding: 16,
+  },
+
+  // For the Text label
+  germanLabel: {
+    marginTop: 20,
+    fontWeight: 'bold',
+  },
+
+  // For the Text meaning
+  germanWord: {
+    marginTop: 15,
+    fontSize: 30,
+    fontStyle: 'italic',
+  },
+});
+
 class Dictionary extends Component {
+  getInitialState() {
+    return {
+      input: '',
+      output: '',
+    };
+  }
+
   render() {
     return (
       <View style = { styles.parent } >
@@ -23,31 +49,10 @@ class Dictionary extends Component {
         <Text style = { styles.germanLabel } >
           Its German equivalent is:
         </Text>
-        <Text style = { styles.germanWord } >
-        </Text>
+        <Text style = { styles.germanWord } />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  // For the container View
-  parent: {
-    padding: 16
-  },
-
-  // For the Text label
-  germanLabel: {
-    marginTop: 20,
-    fontWeight: 'bold'
-  },
-
-  // For the Text meaning
-  germanWord: {
-    marginTop: 15,
-    fontSize: 30,
-    fontStyle: 'italic'
-  },
-});
 
 AppRegistry.registerComponent('Dictionary', () => Dictionary);
