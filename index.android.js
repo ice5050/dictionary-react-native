@@ -11,6 +11,8 @@ import React, {
   View,
 } from 'react-native';
 
+const englishToGerman = require('./english_german.json');
+
 const styles = StyleSheet.create({
   // For the container View
   parent: {
@@ -32,24 +34,49 @@ const styles = StyleSheet.create({
 });
 
 class Dictionary extends Component {
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       input: '',
       output: '',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.showMeaning = this.showMeaning.bind(this);
+  }
+
+  handleChange(txt) {
+    this.setState({
+      input: txt,
+    });
+  }
+
+  showMeaning() {
+    const meaning = this.state.input in englishToGerman ?
+                      englishToGerman[this.state.input] :
+                      'Not found';
+    this.setState({
+      output: meaning,
+    });
   }
 
   render() {
     return (
-      <View style = { styles.parent } >
+      <View style={styles.parent}>
         <Text>
           Type something in English:
         </Text>
-        <TextInput />
-        <Text style = { styles.germanLabel } >
+        <TextInput
+          text={this.state.input}
+          onChangeText={this.handleChange}
+          onSubmitEditing = {this.showMeaning}
+        />
+        <Text style={styles.germanLabel}>
           Its German equivalent is:
         </Text>
-        <Text style = { styles.germanWord } />
+        <Text style={styles.germanWord}>
+          {this.state.output}
+        </Text>
       </View>
     );
   }
